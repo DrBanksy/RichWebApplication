@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Work</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <h2>Tip: Pick a color before you create a note</h2>
+    <form id="test" onsubmit="add()">
+        <div id="notes-container"></div>
+        <div id="makenewnote">
+        <button type="submit" class="add-note-btn">New Note</button>
+        <select id="colorChoices" required>
+                <option value="">Choose a color...</option>
+                <option value="Blue">Blue</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Red">Red</option>
+                <option value="Pink">Pink</option>
+            </select>
+        </div>
+    </form>
+</body>
+</html>
