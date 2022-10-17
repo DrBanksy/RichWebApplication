@@ -1,3 +1,12 @@
+/*
+TODO: 
+
+- show error div when adding new contact 
+- clicking on name should swap between ascending/descending
+- add search function for mobile number
+- if there is no match then display div noresult
+- odd numbered data should have specific color #f2f2f2
+*/
 function loadContacts() {
 	const contacts = getAllContactsFromLocalStorage();
 	addToTable(contacts);
