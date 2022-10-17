@@ -1,0 +1,39 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>Lab 2</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body onload="loadContacts()">
+    
+
+    <div id="container">
+        <h1> Phone directory</h1>
+        <div id="fieldsContainer">
+                <input type="text" id="contactName" name="contactname" placeholder="Contact Name" required>
+                <input type="text" id="mobile" name="mobile" placeholder="Mobile Number" required>
+                <input type="text" id="email" name="email" placeholder="Email" required>
+                <input type="submit" value="Add Contact" onclick="addContact()">
+
+                <div id="error">error here</div>
+        </div>
+
+        <div id="listofcontacts">
+         <table id="contactTable">
+          <tr>
+            <th>Name</th>
+            <th>Mobile Number</th>
+            <th>Email</th>
+          </tr>
+
+        </table> 
+        </div>
+    </div>
+
+
+    
+</body>
+</html>
