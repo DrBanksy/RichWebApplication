@@ -7,6 +7,7 @@ TODO:
 - if there is no match then display div noresult
 - odd numbered data should have specific color #f2f2f2
 */
+
 function loadContacts() {
 	const contacts = getAllContactsFromLocalStorage();
 	addToTable(contacts);
@@ -86,6 +87,8 @@ function validate() {
 }
 
 function checkName(name) {
+	// https://codingbeautydev.com/blog/javascript-check-if-string-contains-only-letters-and-spaces/
+	// used the regex for validating name 
   if(/^[A-Za-z\s]*$/.test(name) && name.length < 20 && name !== '') {
   	return true;
   }
@@ -93,7 +96,8 @@ function checkName(name) {
 
 function checkPhone(inputtxt)
 {	
-  
+  // https://www.w3resource.com/javascript/form/phone-no-validation.php
+  // used for phone number validation
   var phoneno = /^\d{10}$/;
   if((inputtxt.match(phoneno)) && inputtxt !== ''){
     return true;
@@ -105,6 +109,8 @@ function checkPhone(inputtxt)
 }
 
 function checkEmail(email) {
+	// https://www.w3resource.com/javascript/form/email-validation.php
+	// used for email validation
 	if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) && email.length < 40 && email !== '') {
 		return true;
 	} else {
