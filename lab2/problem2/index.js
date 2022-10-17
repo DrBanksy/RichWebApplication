@@ -6,11 +6,19 @@ async function fetchPosts() {
     let filteredPosts = posts.filter(post => countWords(post.title) > 6)
     console.log(filteredPosts);
     
-    // let bodys = posts.map(function(c) {
-    //   return c.body;
-    // });
+    let bodys = posts.map(function(c) {
+      return c.body;
+    })
+    .reduce(function(prev, curr) {
+      return prev + " " + curr;
+    })
+    .split(/\s+/)
+    .reduce((body, word) => {
+      body[word]= (body[word] || 0) + 1;
+      return body;
+    }, {});
      
-    // console.log(bodys);
+    console.log(bodys);
     
 }
 
