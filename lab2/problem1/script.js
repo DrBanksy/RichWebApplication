@@ -19,7 +19,7 @@ function sortList() {
 	const contacts = getAllContactsFromLocalStorage();
 	let sortedUsers = "[]";
 	let num = +localStorage.getItem('sort') 
-	if(localStorage.getItem('sort') == null || num%2 !== 0) {
+	if(num%2 !== 0) {
 		sortedUsers = contacts.sort(function(a, b) {
 			console.log('not zero' + localStorage.getItem('sort') );
 		// https://reactgo.com/javascript-sort-objects-alphabetically/ - sort alphabetically
