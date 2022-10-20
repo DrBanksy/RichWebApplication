@@ -1,17 +1,68 @@
 /*
 TODO: 
 
-- show error div when adding new contact 
+- show error div when adding new contact - done
 - clicking on name should swap between ascending/descending
 - add search function for mobile number
 - if there is no match then display div noresult
-- odd numbered data should have specific color #f2f2f2
+- odd numbered data should have specific color #f2f2f2 - done
 */
+let error = "";
 
 function loadContacts() {
 	const contacts = getAllContactsFromLocalStorage();
 	addToTable(contacts);
+
 }
+
+function sortList() {
+	const contacts = getAllContactsFromLocalStorage();
+	let sortedUsers = "[]";
+	let num = +localStorage.getItem('sort') 
+	if(localStorage.getItem('sort') == null || num%2 !== 0) {
+		sortedUsers = contacts.sort(function(a, b) {
+			console.log('not zero' + localStorage.getItem('sort') );
+		// https://reactgo.com/javascript-sort-objects-alphabetically/ - sort alphabetically
+
+		var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+  		var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+ 	
+  		if (nameA < nameB) {
+    		return -1; //nameA comes first
+  		}
+  		if (nameA > nameB) {
+    		return 1; // nameB comes first
+  		}
+  		return 0;  // names must be equal
+
+		});
+		localStorage.setItem('sort', JSON.stringify(2))
+	} else {
+		sortedUsers = contacts.sort(function(a, b) {
+			console.log('is zero');
+		// https://reactgo.com/javascript-sort-objects-alphabetically/ - sort alphabetically
+
+		var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+  		var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+ 	
+  		if (nameA > nameB) {
+    		return -1; //nameA comes first
+  		}
+  		if (nameA < nameB) {
+    		return 1; // nameB comes first
+  		}
+  		return 0;  // names must be equal
+
+		});
+		localStorage.setItem('sort', JSON.stringify(1));
+	}
+
+	location.reload();
+	saveContactsToLocalStorage(sortedUsers);
+	addToTable(sortedUsers);
+}
+
+
 
 function addToTable(contacts) {
 	let table = document.getElementById("contactTable");
@@ -29,15 +80,20 @@ function addToTable(contacts) {
 
 
 function addContact() {
+	let contactName = document.getElementById('contactName').value;
+	let mobile = document.getElementById('mobile').value;
+	let email = document.getElementById('email').value;
+
 	if(validate() == false) {
 		// show errors
-		alert('failed validate');
+		document.getElementById('error').style.visibility = "visible";
+		document.getElementById('error').innerHTML = error;
+		
 	} else {
+		document.getElementById('error').style.visibility = "hidden";
 		let table = document.getElementById("contactTable");
 
-		let contactName = document.getElementById('contactName').value;
-		let mobile = document.getElementById('mobile').value;
-		let email = document.getElementById('email').value;
+		
 		const obj = {
         id: Math.floor(Math.floor(Date.now() / 1000) ),
         name: contactName,
@@ -53,7 +109,13 @@ function addContact() {
   		saveContactsToLocalStorage(obj)
   	}
     	
-  	addToTable(obj);
+  	var row = table.insertRow(-1);
+		var cell1 = row.insertCell(-1);
+		var cell2 = row.insertCell(-1);
+		var cell3 = row.insertCell(-1);
+		cell1.innerHTML = contactName;
+		cell2.innerHTML = mobile;
+		cell3.innerHTML = email;
 
 		console.log(localStorage.getItem("contacts"));
 	} 
@@ -63,8 +125,9 @@ function saveContactsToLocalStorage(obj) {
  	localStorage.setItem("contacts", JSON.stringify(obj));
 }
 
-function getAllContactsFromLocalStorage() {
+function getAllContactsFromLocalStorage(){
     if(localStorage.getItem("contacts") == null) {
+    	console.log("test");
         return JSON.parse("[]");
     } else {
         console.log(localStorage.getItem("contacts"));
@@ -86,11 +149,16 @@ function validate() {
 	return bool;
 }
 
+
+
+
 function checkName(name) {
 	// https://codingbeautydev.com/blog/javascript-check-if-string-contains-only-letters-and-spaces/
 	// used the regex for validating name 
   if(/^[A-Za-z\s]*$/.test(name) && name.length < 20 && name !== '') {
   	return true;
+  } else {
+  	error = "name not valid";
   }
 }
 
@@ -103,6 +171,7 @@ function checkPhone(inputtxt)
     return true;
   }
   else {
+  	error = "number not valid";
   	return false;
   }
  
@@ -114,6 +183,7 @@ function checkEmail(email) {
 	if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) && email.length < 40 && email !== '') {
 		return true;
 	} else {
+		error = "email not valid";
 		return false;
 	}
 }

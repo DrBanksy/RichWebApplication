@@ -21,6 +21,7 @@
 	background-color: yellow;
 	width: 100%;
 	visibility: hidden;
+	color: red;
 }
 
 #listofcontacts{
@@ -41,4 +42,15 @@ td, th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+}
+
+tr:nth-child(odd) {background: #f2f2f2}
+
+#nameBtn {
+	text-align: left;
+	border:  none;
+	font-weight: bold;
+	cursor:  pointer;
+	width: 100%;
+
 }
