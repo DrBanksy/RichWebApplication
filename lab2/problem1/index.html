@@ -12,6 +12,7 @@
 
     <div id="container">
         <h1> Phone directory</h1>
+
         <div id="fieldsContainer">
                 <input type="text" id="contactName" name="contactname" placeholder="Contact Name" required>
                 <input type="text" id="mobile" name="mobile" placeholder="Mobile Number" required>
@@ -21,6 +22,12 @@
                 <div id="error"></div>
         </div>
 
+        <div id="search">
+            <label>Search contact by Mobile No:</label>
+            <input type="text"  oninput="search()" id="searchname" name ="searchname">
+            <div id="noResult">No result</div>
+        </div>
+
         <div id="listofcontacts">
          <table id="contactTable">
           <tr>
@@ -28,7 +35,6 @@
             <th>Mobile Number</th>
             <th>Email</th>
           </tr>
-
         </table> 
         </div>
     </div>

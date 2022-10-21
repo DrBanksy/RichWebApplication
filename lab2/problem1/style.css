@@ -1,18 +1,24 @@
 * {
 	margin: 0;
+
+}
+
+body {
+		background-color: #ecf0f1;
 }
 #container {
 	padding-top: 40px;
-	background: green;
+	/*background: green;*/
 	display: inline-block;
 	width: 100%;
 	text-align: center;
 }
 
-#fieldsContainer{
+#fieldsContainer {
 	display: inline-block;
-	background-color: black;
-	padding: 10px;
+	background-color: #2ecc71;
+	padding-top: 20px;
+	padding:  0 auto;
 	width: 100%;
 }
 
@@ -26,7 +32,8 @@
 
 #listofcontacts{
 	display: block;
-	background-color: blue;
+	background-color: #3498db;
+	border-radius: 10px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
@@ -36,6 +43,16 @@
 
 #listofcontacts table {
 	width: 100%;
+}
+
+#noResult{
+	visibility: hidden;
+}
+
+#search {
+	display: inline-block;
+	width: 100%;
+	padding: 20px;
 }
 
 td, th {

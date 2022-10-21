@@ -2,9 +2,9 @@
 TODO: 
 
 - show error div when adding new contact - done
-- clicking on name should swap between ascending/descending
-- add search function for mobile number
-- if there is no match then display div noresult
+- clicking on name should swap between ascending/descending - done
+- add search function for mobile number - done
+- if there is no match then display div noresult - done
 - odd numbered data should have specific color #f2f2f2 - done
 */
 let error = "";
@@ -12,6 +12,42 @@ let error = "";
 function loadContacts() {
 	const contacts = getAllContactsFromLocalStorage();
 	addToTable(contacts);
+
+}
+
+function search() {
+	// every time input changes call this function
+	// search contact directory
+	// match input field with contacts stored in table
+	let input = document.getElementById("searchname");
+	let tableName = document.getElementById("contactTable");
+	let errorDiv = document.getElementById("noResult");
+	let tr = tableName.getElementsByTagName("tr");
+
+	for (i = 0; i < tr.length; i++) {
+		let td = tr[i].getElementsByTagName("td")[0];
+		if(td) {
+			let cellValue = td.textContent || td.innerText;
+			if (cellValue.toUpperCase().indexOf(input.value.toUpperCase()) > -1) {
+		        tr[i].style.display = "";
+
+		    } else {
+		        tr[i].style.display = "none";
+		        
+		    }
+		}
+		if(td) {
+			if(txtValue.toUpperCase() == input.value.toUpperCase()) {
+				errorDiv.style.visibility = "hidden";
+				break;
+			} else {
+				console.log(txtValue.toUpperCase() + " "+  input.value.toUpperCase())
+				errorDiv.style.visibility = "visible";
+			}
+		}
+		
+
+	}
 
 }
 
