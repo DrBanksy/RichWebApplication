@@ -1,14 +1,35 @@
 * {
 	margin: 0;
+
+}
+
+
+#searchBox {
+	background-color: green;
+	padding: 10px;
+	text-align: center;
+	width: 70%;
+	margin: auto;
+	margin-top: 10px;
+	border-radius: 15px;
 }
 
 .flex-container {
     display: flex;
+    overflow: hidden;
 }
 
 .flex-child {
+	margin-top: 15px;
     flex: 1;
-    border: 2px solid yellow;
+    border: 2px solid black;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    word-wrap:break-word;
+    background-color: #ecf0f1;
+    border-radius: 15px;
+    color: black;
 }  
 
 .flex-child:first-child {
@@ -16,6 +37,40 @@
 } 
 
 #img {
-	width: 30%;
-	height: 55%;
+	width: 140px;
+	height: 140px;
+	padding: 20px 20px 20px 0;
+}
+#right {
+	height: 450px;
+}
+
+#left p {
+	width: 50%;
+}
+
+.repoName {
+	font-weight: bold;
+}
+
+#listofrepos {
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	word-wrap:break-word;
+	
+}
+
+.repocell{
+	display: flex;
+	width: 70%;
+	height: 20%;
+	border: 1px solid black;
+	word-wrap:break-word;
+
+}
+
+#left p{
+	border: 1px solid black;
+	padding: 10px;
 }
