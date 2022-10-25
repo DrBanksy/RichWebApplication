@@ -23,11 +23,12 @@ function search() {
 	let tableName = document.getElementById("contactTable");
 	let errorDiv = document.getElementById("noResult");
 	let tr = tableName.getElementsByTagName("tr");
+	let cellValue;
 
 	for (i = 0; i < tr.length; i++) {
 		let td = tr[i].getElementsByTagName("td")[0];
 		if(td) {
-			let cellValue = td.textContent || td.innerText;
+			cellValue = td.textContent || td.innerText;
 			if (cellValue.toUpperCase().indexOf(input.value.toUpperCase()) > -1) {
 		        tr[i].style.display = "";
 
@@ -37,17 +38,19 @@ function search() {
 		    }
 		}
 		if(td) {
-			if(txtValue.toUpperCase() == input.value.toUpperCase()) {
+			console.log(cellValue)
+			if(cellValue.toUpperCase() == input.value.toUpperCase() || input == '') {
 				errorDiv.style.visibility = "hidden";
 				break;
 			} else {
-				console.log(txtValue.toUpperCase() + " "+  input.value.toUpperCase())
+				console.log(cellValue.toUpperCase() + " "+  input.value.toUpperCase())
 				errorDiv.style.visibility = "visible";
 			}
 		}
 		
 
 	}
+
 
 }
 
@@ -56,46 +59,57 @@ function sortList() {
 	let sortedUsers = "[]";
 	let num = +localStorage.getItem('sort') 
 	if(num%2 !== 0) {
-		sortedUsers = contacts.sort(function(a, b) {
-			console.log('not zero' + localStorage.getItem('sort') );
-		// https://reactgo.com/javascript-sort-objects-alphabetically/ - sort alphabetically
-
-		var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-  		var nameB = b.name.toUpperCase(); // ignore upper and lowercase
- 	
-  		if (nameA < nameB) {
-    		return -1; //nameA comes first
-  		}
-  		if (nameA > nameB) {
-    		return 1; // nameB comes first
-  		}
-  		return 0;  // names must be equal
-
-		});
+		sortedUsers = sortListAsc(contacts);
 		localStorage.setItem('sort', JSON.stringify(2))
 	} else {
-		sortedUsers = contacts.sort(function(a, b) {
-			console.log('is zero');
-		// https://reactgo.com/javascript-sort-objects-alphabetically/ - sort alphabetically
-
-		var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-  		var nameB = b.name.toUpperCase(); // ignore upper and lowercase
- 	
-  		if (nameA > nameB) {
-    		return -1; //nameA comes first
-  		}
-  		if (nameA < nameB) {
-    		return 1; // nameB comes first
-  		}
-  		return 0;  // names must be equal
-
-		});
+		sortedUsers = sortListDsc(contacts);
 		localStorage.setItem('sort', JSON.stringify(1));
 	}
 
 	location.reload();
 	saveContactsToLocalStorage(sortedUsers);
 	addToTable(sortedUsers);
+}
+
+function sortListAsc(contacts) {
+	let sortedUsers = contacts.sort(function(a, b) {
+	console.log('not zero' + localStorage.getItem('sort') );
+	// https://reactgo.com/javascript-sort-objects-alphabetically/ - sort alphabetically
+
+	var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+		var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+	
+		if (nameA < nameB) {
+		return -1; //nameA comes first
+		}
+		if (nameA > nameB) {
+		return 1; // nameB comes first
+		}
+		return 0;  // names must be equal
+
+	});
+	return sortedUsers;
+}
+
+function sortListDsc(contacts) {
+	sortedUsers = contacts.sort(function(a, b) {
+		console.log('is zero');
+	// https://reactgo.com/javascript-sort-objects-alphabetically/ - sort alphabetically
+
+	var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+		var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+	
+		if (nameA > nameB) {
+		return -1; //nameA comes first
+		}
+		if (nameA < nameB) {
+		return 1; // nameB comes first
+		}
+		return 0;  // names must be equal
+
+	});
+
+	return sortedUsers;
 }
 
 
@@ -184,9 +198,6 @@ function validate() {
 
 	return bool;
 }
-
-
-
 
 function checkName(name) {
 	// https://codingbeautydev.com/blog/javascript-check-if-string-contains-only-letters-and-spaces/
