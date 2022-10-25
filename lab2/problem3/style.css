@@ -1,0 +1,21 @@
+* {
+	margin: 0;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    border: 2px solid yellow;
+}  
+
+.flex-child:first-child {
+    margin-right: 10px;
+} 
+
+#img {
+	width: 30%;
+	height: 55%;
+}

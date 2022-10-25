@@ -1,0 +1,35 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>Lab 2</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+    <div id="searchBox">
+        <input type="search" placeholder="Username" id="usernameSearch">
+        <button type="submit" onclick="searchUser()" id="userSearch">Search</button>
+    </div>
+
+    <div class="flex-container">
+        <div class="flex-child magenta">
+            <h2>User Profile</h2>
+            <img id="img" src="https://monstar-lab.com/global/wp-content/uploads/sites/11/2019/04/male-placeholder-image-768x768.jpeg">
+            <p id="name">Name</p>
+            <p id="username">Username</p>
+            <p id="email">Email</p>
+            <p id="location">Location</p>
+            <p id="gists">Number of Gists</p>
+        </div>
+
+        <div class="flex-child green">
+            <h2>User Repos</h2>
+            <div id="listofrepos"></div>
+        </div>
+
+    </div>
+    
+</body>
+</html>
