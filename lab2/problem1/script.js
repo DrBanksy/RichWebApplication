@@ -142,8 +142,10 @@ function addContact() {
 	} else {
 		document.getElementById('error').style.visibility = "hidden";
 		let table = document.getElementById("contactTable");
+		document.getElementById('contactName').value = '';
+		document.getElementById('mobile').value = '';
+		document.getElementById('email').value = '';
 
-		
 		const obj = {
         id: Math.floor(Math.floor(Date.now() / 1000) ),
         name: contactName,
