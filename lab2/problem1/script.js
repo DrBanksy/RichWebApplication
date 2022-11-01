@@ -204,7 +204,7 @@ function validate() {
 function checkName(name) {
 	// https://codingbeautydev.com/blog/javascript-check-if-string-contains-only-letters-and-spaces/
 	// used the regex for validating name 
-  if(/^[A-Za-z\s]*$/.test(name) && name.length < 20 && name !== '') {
+  if(/^[A-Za-z\s]*$/.test(name) && name.length <= 20 && name !== '') {
   	return true;
   } else {
   	error = "name not valid";
