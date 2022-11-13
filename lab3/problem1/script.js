@@ -1,3 +1,6 @@
+
+const { Observable, fromEvent } = rxjs;
+
 // saves users notes to local storage in browser
 const saveUsersNotes = function(noteArray) {
     localStorage.setItem("notes", JSON.stringify(noteArray));
@@ -59,9 +62,11 @@ const newNoteElement = function(noteId, text, color) {
         const deleteNotet = confirm("Delete note?");
         if(deleteNotet != false) {removeNote(noteId, newEl);}
     });
-    newEl.addEventListener("change", () => {
-        updateCurrentNote(noteId, newEl.value);
-    });
+    // newEl.addEventListener("change", () => {
+    //     updateCurrentNote(noteId, newEl.value);
+    // });
+    const changed = fromEvent(document, 'change');
+    changed.subscribe(updateCurrentNote(noteId, newEl.value));
     console.log(newEl.id);
     console.log(color)
     newEl.style.backgroundColor = color?.toString();
