@@ -1,6 +1,10 @@
 
 const { Observable, fromEvent } = rxjs;
 
+
+const formclick = fromEvent(document.getElementById("add-note-btn-id"), "click");
+formclick.subscribe(() => add());
+
 // saves users notes to local storage in browser
 const saveUsersNotes = function(noteArray) {
     localStorage.setItem("notes", JSON.stringify(noteArray));
@@ -58,18 +62,20 @@ const newNoteElement = function(noteId, text, color) {
     const date = new Date();
     const datetext = document.createTextNode(date.getFullYear());
     noteDate.appendChild(datetext);
-    newEl.addEventListener("dblclick", () => {
+
+    const noteDblClick = fromEvent(newEl, "dblclick");
+    noteDblClick.subscribe(function() {
         const deleteNotet = confirm("Delete note?");
         if(deleteNotet != false) {removeNote(noteId, newEl);}
     });
-    // newEl.addEventListener("change", () => {
-    //     updateCurrentNote(noteId, newEl.value);
-    // });
-    const changed = fromEvent(document, 'change');
-    changed.subscribe(updateCurrentNote(noteId, newEl.value));
+
+    const notechange = fromEvent(newEl, "change");
+    notechange.subscribe(() => updateCurrentNote(noteId, newEl.value));
+    
     console.log(newEl.id);
     console.log(color)
     newEl.style.backgroundColor = color?.toString();
+
     return newEl;
 }
 
