@@ -12,14 +12,18 @@
 <body>
    <div id="main">
       <div id="clock">
-         <input placeholder="h" id="hour">
-         <input placeholder="m" id="mins">
-         <input placeholder="s"id="sec">
-         <button id="start">START COUNTDOWN></button>
+         <input placeholder="h" id="hour" class="clockinput">
+         <span>:</span>
+         <input placeholder="m" id="mins" class="clockinput">
+         <span>:</span>
+         <input placeholder="s" id="sec" class="clockinput"><br>
+         <button id="start">START COUNTDOWN</button>
       </div>
 
       <div id="countdown">
-         
+         <span id="hoursCount">1</span>
+         <span id="minutesCount">30</span>
+         <span id="secondsCount">13</span>
       </div>
    </div> 
 </body>

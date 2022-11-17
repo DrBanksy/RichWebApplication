@@ -1,0 +1,44 @@
+* {
+	margin:  0;
+}
+
+#main {
+	background-color:  black;
+	text-align: centers;
+	width: 100%;
+
+}
+
+#clock {
+	background-color: green;
+	text-align: center;
+	width: 50%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.clockinput{
+	width:  35px;
+	height:  25px;
+	text-align: center;
+}
+
+#clock button {
+	margin-top: 5px;
+	padding: 5px;
+}
+
+
+#countdown {
+	background-color: yellow;
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+	padding: 20px;
+}
+
+#sec {
+	width:  25px;
+	height:  15px;
+	
+}
