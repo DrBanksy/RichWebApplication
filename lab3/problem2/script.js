@@ -8,7 +8,7 @@ const displayCountdown = (totalseconds) => {
 	const minutes = document.getElementById('minutesCount');
 	const seconds = document.getElementById('secondsCount');
 	if(totalseconds <= 0) {
-        console.log('test');
+        resetTimer();
     } else {
     	hours.innerHTML = Math.floor(totalseconds / 3600);
         minutes.innerHTML = Math.floor(totalseconds % 3600 / 60);
@@ -22,10 +22,11 @@ countDownTimer = startButtonObserv.subscribe(() => {
     const hours = document.getElementById('hour');
 	const mins = document.getElementById('mins');
 	const sec = document.getElementById('sec');
+	const seconds = document.getElementById('secondsCount'); 
 
     //converting hours and minutes to seconds
     let totalSeconds = (hours.value * 60 * 60 * 1000) + (mins.value * 60 *1000) + (sec.value * 1000);
-    totalSeconds = totalSeconds / 1000;
+    totalSeconds = (totalSeconds / 1000);
 
     // timer observable, every 1 second
     let countDownTimer = interval(1000).pipe(
@@ -36,3 +37,25 @@ countDownTimer = startButtonObserv.subscribe(() => {
         })
 });
 
+
+const resetTimer = () => {
+	//clear clock
+	const hoursCount = document.getElementById('hoursCount');
+	const minutesCount = document.getElementById('minutesCount');
+	const secondsCount = document.getElementById('secondsCount');
+
+	hoursCount.innerHTML = "0"
+	minutesCount.innerHTML = "0";
+	secondsCount.innerHTML = "0";
+
+	//clear user input
+	const userInputHr = document.getElementById('hour');
+	const userInputMin = document.getElementById('mins');
+	const userInputSec = document.getElementById('sec');
+
+	userInputHr.value = "";
+	userInputMin.value = "";
+	userInputSec.value = "";
+
+
+}
