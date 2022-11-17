@@ -31,7 +31,7 @@ countDownTimer = startButtonObserv.subscribe(() => {
     // timer observable, every 1 second
     let countDownTimer = interval(1000).pipe(
     	take(totalSeconds),
-		map((num) => totalSeconds - num))
+		map((num) => totalSeconds - (num+1)))
     	.subscribe((totalSeconds) => {
             displayCountdown(totalSeconds);
         })
