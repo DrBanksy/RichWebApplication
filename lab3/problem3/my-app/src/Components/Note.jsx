@@ -6,7 +6,7 @@ import { Button, ButtonGroup} from '@chakra-ui/react'
 
 
 function Note({
-    noteColor,
+    color,
     id,
     text,
     children,
@@ -15,29 +15,18 @@ function Note({
     setNotes,
     notes,
   }) {
-    const [isEditing, setIsEditing] = useState(null);
-    const [editedContent, setEditedContent] = useState(null);
-  
+
     return (
       <div
         style={{
           width: parent ? "250px" : "300px",
           margin: "15px auto",
-          background: noteColor,
+          background: color,
           border: "1px solid black",
         }}
       >
         <span>Note ID: {id}</span>
-        {isEditing ? (
-          <FormControl
-            onChange={(e) => {
-              setEditedContent(e.target.value);
-            }}
-            defaultValue={text}
-          />
-        ) : (
-          <p>{text}</p>
-        )}
+
         <div
           style={{
             background: "#fff",
@@ -45,12 +34,7 @@ function Note({
           }}
         >
           <ButtonGroup>
-            <Button
-              onClick={() => {
-                setIsEditing(!isEditing);
-              }}
-              variant="solid"
-            >
+            <Button>
               Edit Note
             </Button>
             <Button
