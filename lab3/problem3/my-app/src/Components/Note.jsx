@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import {  FormControl } from "react-bootstrap";
 import { Button, ButtonGroup} from '@chakra-ui/react'
-import { fromEvent } from "rxjs";
 
 function Note({
     color,
@@ -66,9 +65,8 @@ function Note({
               Edit Note
             </Button>
             <Button
-              onClick={() => {
-                onDelete(id);
-              }}
+              id={id}
+              className="delete-note"
               variant="outline"
             >
               Delete Note

@@ -4,7 +4,7 @@ import { Stack, HStack, VStack } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import Note from "./Components/Note";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { fromEvent } from "rxjs";
 import { useEffect, useState } from "react";
 import AddNotes from "./Components/AddNotes";
 
@@ -24,6 +24,21 @@ function App() {
     localStorage.setItem("notes", JSON.stringify(updatedNotes));
     setNotes(updatedNotes);
   };
+
+  useEffect(() => {
+    const click = fromEvent(
+      document.getElementsByClassName("delete-note"),
+      "click"
+    ).subscribe((clicked) => {
+      console.log("clicked", clicked.target.id);
+      onDelete(+clicked.target.id);
+    });
+
+    return () => {
+      click.unsubscribe();
+    };
+  }, []);
+
   return (
     <div className="App">
       <VStack spacing='10px'>
