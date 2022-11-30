@@ -16,6 +16,8 @@
     "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "rxjs": "^7.5.7",
+    "rxjs-compat": "^6.6.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
