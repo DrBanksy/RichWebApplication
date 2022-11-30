@@ -16,6 +16,20 @@ function Note({
     notes,
   }) {
 
+    const [isEditing, setIsEditing] = useState(null);
+    const [editedContent, setEditedContent] = useState(null);
+    useEffect(() => {
+      if (isEditing === false) {
+        const updatedNotes = notes.map((note) => {
+          return {
+            ...note,
+            note: note.id === id ? editedContent : note.note,
+          };
+        });
+        setNotes(updatedNotes);
+      }
+    }, [isEditing]);
+
     return (
       <div
         style={{
@@ -26,7 +40,16 @@ function Note({
         }}
       >
         <span>Note ID: {id}</span>
-
+        {isEditing ? (
+          <FormControl
+            onChange={(e) => {
+              setEditedContent(e.target.value);
+            }}
+            defaultValue={text}
+          />
+        ) : (
+          <p>{text}</p>
+        )}
         <div
           style={{
             background: "#fff",
@@ -34,7 +57,12 @@ function Note({
           }}
         >
           <ButtonGroup>
-            <Button>
+            <Button
+              onClick={() => {
+                setIsEditing(!isEditing);
+              }}
+              variant="solid"
+            >
               Edit Note
             </Button>
             <Button
