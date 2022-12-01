@@ -63,8 +63,8 @@ export default function AddNotes({ notesarray, setNotes }) {
       }
     };
   
-    const colors = {
-      blue: "56CCF2",
+    const colorChoices = {
+      blue: "blue",
       yellow: "yellow",
       red: "red",
       pink: "pink"
@@ -110,24 +110,24 @@ export default function AddNotes({ notesarray, setNotes }) {
         </DropdownButton>
           <DropdownButton
             onSelect={(color) => {
-              setColor(colors[color]);
+              setColor(colorChoices[color]);
             }}
             title={"Color"}
             variant="secondary"
           >
-            <Dropdown.Item active={color === colors["blue"]} eventKey="blue">
+            <Dropdown.Item active={color === colorChoices["blue"]} eventKey="blue">
               Blue
             </Dropdown.Item>
             <Dropdown.Item
-              active={color === colors["yellow"]}
+              active={color === colorChoices["yellow"]}
               eventKey="yellow"
             >
               Yellow
             </Dropdown.Item>
-            <Dropdown.Item active={color === colors["red"]} eventKey="red">
+            <Dropdown.Item active={color === colorChoices["red"]} eventKey="red">
               Red
             </Dropdown.Item>
-            <Dropdown.Item active={color === colors["pink"]} eventKey="pink">
+            <Dropdown.Item active={color === colorChoices["pink"]} eventKey="pink">
               Pink
             </Dropdown.Item>
           </DropdownButton>

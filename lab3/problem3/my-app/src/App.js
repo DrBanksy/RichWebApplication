@@ -5,13 +5,15 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import Note from "./Components/Note";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { fromEvent } from "rxjs";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import AddNotes from "./Components/AddNotes";
 
 function App() {
   const [notes, setNotes] = useState(
     JSON.parse(localStorage.getItem("notes")) || []
   );
+
+  const ref = useRef(null);
 
   useEffect(() => {
     if (notes) {
@@ -20,7 +22,8 @@ function App() {
   }, [notes]);
 
   const onDelete = (id) => {
-    const updatedNotes = notes.filter((note) => note.id !== id);
+    let updatedNotes = notes.filter((note) => note.id !== id);
+    updatedNotes = updatedNotes.filter((note) => note.parent !== id);
     localStorage.setItem("notes", JSON.stringify(updatedNotes));
     setNotes(updatedNotes);
   };
@@ -30,7 +33,7 @@ function App() {
       document.getElementsByClassName("delete-note"),
       "click"
     ).subscribe((clicked) => {
-      console.log("clicked", clicked.target.id);
+      console.log("clicked delete", clicked.target.id);
       onDelete(+clicked.target.id);
     });
 
@@ -55,6 +58,7 @@ function App() {
               color={note.color}
               id={note.id}
               onDelete={onDelete}
+              deleteRef={ref}
               notes={notes}
               setNotes={setNotes}
             >
