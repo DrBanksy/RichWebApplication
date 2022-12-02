@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import {  FormControl } from "react-bootstrap";
 import { Button, ButtonGroup} from '@chakra-ui/react'
+import { Container } from '@chakra-ui/react'
+
 
 function Note({
     color,
@@ -30,12 +32,9 @@ function Note({
     }, [isEditing]);
 
     return (
-      <div
+      <Container maxW='400px' border="1px" mx="auto" mt="10px" p="20px" centerContent
         style={{
-          width: parent ? "250px" : "300px",
-          margin: "15px auto",
           background: color,
-          border: "1px solid black",
         }}
       >
         <span>Note ID: {id}</span>
@@ -75,7 +74,7 @@ function Note({
 
           <div>{children}</div>
         </div>
-      </div>
+      </Container>
     );
 }
 
