@@ -5,6 +5,7 @@ import { Button, ButtonGroup } from '@chakra-ui/react';
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import { ChevronDownIcon } from '@chakra-ui/icons'
+import { Container } from '@chakra-ui/react'
 
 import {
     Menu,
@@ -71,15 +72,8 @@ export default function AddNotes({ notesarray, setNotes }) {
     };
   
     return (
-        <div
-        style={{
-          width: "300px",
-          margin: "0 auto",
-          margintop: "0px",
-          border: "1px solid black",
-          padding: "40px",
-        }}
-      >
+        <Container maxW='400px' bg='blue.50' mx="auto" mt="10px" p="20px" centerContent
+        style={{borderRadius:"20px"}}>
         <FormControl
           onChange={(e) => {
             setNote(e.target.value);
@@ -133,8 +127,8 @@ export default function AddNotes({ notesarray, setNotes }) {
           </DropdownButton>
         </ButtonGroup>
         <br />
-        <Button onClick={onAdd}>Add Note</Button>
-      </div>
+        <Button colorScheme='whatsapp' onClick={onAdd}>Add Note</Button>
+      </Container>
     );
   }
   

@@ -40,7 +40,7 @@ function App() {
     return () => {
       click.unsubscribe();
     };
-  }, []);
+  }, [notes]);
 
   return (
     <div className="App">
