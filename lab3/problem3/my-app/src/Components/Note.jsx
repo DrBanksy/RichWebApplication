@@ -32,7 +32,7 @@ function Note({
     }, [isEditing]);
 
     return (
-      <Container maxW='400px' border="1px" mx="auto" mt="10px" p="20px" centerContent
+      <Container maxW='300px' border="1px" mx="auto" mt="10px" p="20px" centerContent
         style={{
           background: color,
         }}
@@ -50,11 +50,11 @@ function Note({
         )}
         <div
           style={{
-            background: "#fff",
+            background: color,
             padding: "15px",
           }}
         >
-          <ButtonGroup>
+          <ButtonGroup >
             <Button
               onClick={() => {
                 setIsEditing(!isEditing);
@@ -66,7 +66,7 @@ function Note({
             <Button
               id={id}
               className="delete-note"
-              variant="outline"
+              variant="solid"
             >
               Delete Note
             </Button>
