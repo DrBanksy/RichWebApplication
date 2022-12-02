@@ -32,10 +32,13 @@ function Note({
     }, [isEditing]);
 
     return (
-      <Container maxW='300px' border="1px" mx="auto" mt="10px" p="20px" centerContent
-        style={{
-          background: color,
-        }}
+      <div
+      style={{
+        width: parent ? "250px" : "300px",
+        margin: "20px auto",
+        background: color,
+        border: "1px solid #333",
+      }}
       >
         <span>Note ID: {id}</span>
         {isEditing ? (
@@ -50,8 +53,9 @@ function Note({
         )}
         <div
           style={{
-            background: color,
+            background: "#fff",
             padding: "15px",
+            
           }}
         >
           <ButtonGroup >
@@ -74,7 +78,7 @@ function Note({
 
           <div>{children}</div>
         </div>
-      </Container>
+      </div>
     );
 }
 
