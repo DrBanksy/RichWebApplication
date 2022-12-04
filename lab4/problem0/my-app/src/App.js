@@ -7,6 +7,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { fromEvent } from "rxjs";
 import { useEffect, useState, useRef } from "react";
 import AddNotes from "./Components/AddNotes";
+import { Grid, GridItem } from '@chakra-ui/react'
+import { Row, Col } from "react-bootstrap";
+
 
 function App() {
   const [notes, setNotes] = useState(
@@ -44,44 +47,28 @@ function App() {
 
   return (
     <div className="App">
-      <VStack spacing='10px'>
-        {notes.map((note) => {
-          const isParent = !note.parent;
-          if (note.parent) {
-            return null;
-          }
-          const children = notes.filter((n) => n.parent === note.id);
-          return (
-            <Note
-              key={note.id}
-              text={note.note}
-              color={note.color}
-              id={note.id}
-              onDelete={onDelete}
-              deleteRef={ref}
-              notes={notes}
-              setNotes={setNotes}
-            >
-              {children.map((c) => {
-                return (
-                  <Note
-                    parent={note.id}
-                    id={c.id}
-                    text={c.note}
-                    color={c.color}
-                    onDelete={onDelete}
-                    notes={notes}
-                    setNotes={setNotes}
-                  />
-                );
-              })}
-            </Note>
-          );
-        })}
-      </VStack>
+      <Row>
+      {notes.map((note, i) => (
+        <Col sm={4}>
+          <Note
+            key={note.id}
+            text={note.note}
+            color={note.color}
+            id={note.id}
+            onDelete={onDelete}
+            deleteRef={ref}
+            notes={notes}
+            setNotes={setNotes}
+          ></Note>
+        </Col>
+      ))}
+      </Row>
+      
       <AddNotes notesarray={notes} setNotes={setNotes} />
     </div>
   );
 }
+
+
 
 export default App;
