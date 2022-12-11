@@ -86,7 +86,7 @@ export default function AddNotes({ notesarray, setNotes }) {
             margin: "10px 0",
           }}
         >
-          <DropdownButton
+          {/* <DropdownButton
           onSelect={(noteId) => {
             setParent(+noteId);
           }}
@@ -101,7 +101,7 @@ export default function AddNotes({ notesarray, setNotes }) {
               </Dropdown.Item>
             );
           })}
-        </DropdownButton>
+        </DropdownButton> */}
           <DropdownButton
             onSelect={(color) => {
               setColor(colorChoices[color]);
