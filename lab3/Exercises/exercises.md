@@ -5,6 +5,8 @@ Streams implement the design pattern called the observer pattern hence there is 
 
 When we have data that lives in various remote locations it introduces a synchronisation problem. One such method of overcoming this problem is to use streams to model the application state. If all aspects of the application are using streams then the application is now a stream processing problem rather than a synchronisation problem. Streams are used for reactive programming. Reactive programming utilises asynchronous events to handle updating of the application.
 
+
+
 # Question 2
 RxJS can be used to handle network responses to API requests by implementing an observable stream which observers can subscribe to. For example, when interacting with an API using RxJS we can utilise various operators such as map, flat map and tap etc. If we wanted to retrieve some information from an API we would use observables which are a core concept in RxJS. These observables contain data as it becomes available. An observer will be able to see the data coming into an observable. When interacting with an API we could use the Fetch API to make a HTTP request which will return an observable which can perform HTTP requests when subscribed to by an observer.
 
